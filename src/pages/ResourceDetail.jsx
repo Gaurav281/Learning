@@ -27,8 +27,7 @@ const ResourceDetail = () => {
     fetchResource();
   }, [id]);
 
-  if (loading) return null;
-  if (!resource) return null;
+  if (loading || !resource) return null;
 
   const hasPurchased = user?.purchasedResources?.some(
     (r) => (typeof r === "string" ? r : r._id) === resource._id
@@ -38,122 +37,128 @@ const ResourceDetail = () => {
     <>
       <Navbar />
 
-      <div className="container py-14">
-        {/* TOP SECTION */}
-        <div className="grid md:grid-cols-2 gap-12">
-          <img
-            src={
-              resource.previewImage?.trim()
-                ? resource.previewImage
-                : generatePoster(resource.title)
-            }
-            alt={resource.title}
-            className="rounded-xl border"
-          />
+      <div className="bg-slate-50 min-h-screen">
+        <div className="container py-16">
+          {/* Top Section */}
+          <div className="grid lg:grid-cols-2 gap-14">
+            {/* Image */}
+            <img
+              src={
+                resource.previewImage?.trim()
+                  ? resource.previewImage
+                  : generatePoster(resource.title)
+              }
+              alt={resource.title}
+              className="rounded-2xl border bg-white"
+            />
 
+            {/* Details */}
+            <div>
+              <h1 className="text-3xl font-bold text-slate-900">
+                {resource.title}
+              </h1>
 
-          <div>
-            <h1 className="text-3xl font-semibold text-slate-900">
-              {resource.title}
-            </h1>
+              <p className="mt-4 text-slate-600 leading-relaxed">
+                {resource.description}
+              </p>
 
-            <p className="mt-4 text-slate-600 leading-relaxed">
-              {resource.description}
-            </p>
-
-            {/* PRICE SECTION */}
-            <div className="mt-6">
-              {resource.discountPercent > 0 ? (
-                <div className="flex items-end gap-3">
-                  <span className="text-lg line-through text-slate-400">
+              {/* Pricing */}
+              <div className="mt-6">
+                {resource.discountPercent > 0 ? (
+                  <div className="flex items-end gap-3">
+                    <span className="text-lg line-through text-slate-400">
+                      ₹{resource.price}
+                    </span>
+                    <span className="text-3xl font-bold text-green-600">
+                      ₹{resource.finalPrice}
+                    </span>
+                    <span className="text-sm text-green-600">
+                      ({resource.discountPercent}% OFF)
+                    </span>
+                  </div>
+                ) : (
+                  <span className="text-3xl font-bold text-blue-600">
                     ₹{resource.price}
                   </span>
-                  <span className="text-3xl font-semibold text-green-600">
-                    ₹{resource.finalPrice}
-                  </span>
-                  <span className="text-sm text-green-600">
-                    ({resource.discountPercent}% OFF)
-                  </span>
-                </div>
-              ) : (
-                <span className="text-3xl font-semibold text-blue-600">
-                  ₹{resource.price}
-                </span>
-              )}
-            </div>
+                )}
+              </div>
 
-            {/* CTA SECTION */}
-            <div className="mt-8">
-              {hasPurchased ? (
-                <button
-                  onClick={() => navigate("/profile")}
-                  className="bg-green-600 text-white px-6 py-3 rounded-lg"
-                >
-                  Access Resource
-                </button>
-              ) : (
-                <>
+              {/* CTA */}
+              <div className="mt-8">
+                {hasPurchased ? (
                   <button
-                    onClick={() => navigate(`/payment/${resource._id}`)}
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg"
+                    onClick={() => navigate("/profile")}
+                    className="bg-green-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition"
                   >
-                    Buy Now
+                    Go to Dashboard
                   </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => navigate(`/payment/${resource._id}`)}
+                      className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+                    >
+                      Buy Now
+                    </button>
 
-                  <button
-                    onClick={() =>
-                    (window.location.href =
-                      "https://t.me/YOUR_PAYMENT_BOT")
-                    }
-                    className="block mt-3 text-sm text-slate-600 underline"
-                  >
-                    Buy via Telegram (optional)
-                  </button>
-                </>
-              )}
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://t.me/YOUR_PAYMENT_BOT")
+                      }
+                      className="block mt-4 text-sm text-slate-600 underline"
+                    >
+                      Buy via Telegram
+                    </button>
+                  </>
+                )}
 
-              <p className="text-xs text-slate-500 mt-3">
-                Secure payment • Manual verification • Lifetime access
-              </p>
+                <p className="mt-3 text-xs text-slate-500">
+                  Secure UPI payment • Manual verification • Lifetime access
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* DETAILS SECTION */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
-            <h2 className="text-xl font-semibold text-slate-900">
-              What you will get
-            </h2>
+          {/* Bottom Section */}
+          <div className="mt-20 grid md:grid-cols-3 gap-10">
+            {/* Benefits */}
+            <div className="md:col-span-2 bg-white border rounded-2xl p-8">
+              <h2 className="text-xl font-semibold text-slate-900">
+                What you will get
+              </h2>
 
-            <ul className="mt-4 space-y-3 text-slate-700 list-disc pl-5">
-              <li>High-quality GATE-focused study material</li>
-              <li>Carefully structured content for exam preparation</li>
-              <li>Instant access after approval</li>
-              <li>Lifetime availability in your dashboard</li>
-            </ul>
-          </div>
+              <ul className="mt-4 space-y-3 list-disc pl-5 text-slate-700">
+                <li>GATE-level questions & concepts</li>
+                <li>Structured, exam-oriented material</li>
+                <li>Instant access after approval</li>
+                <li>Lifetime availability in dashboard</li>
+              </ul>
+            </div>
 
-          {/* INFO CARD */}
-          <div className="border rounded-xl p-6 bg-slate-50">
-            <h3 className="font-semibold text-slate-900">
-              Resource Info
-            </h3>
+            {/* Info Card */}
+            <div className="bg-white border rounded-2xl p-8">
+              <h3 className="font-semibold text-slate-900">
+                Resource Information
+              </h3>
 
-            <div className="mt-4 text-sm text-slate-700 space-y-2">
-              <p>
-                <strong>Type:</strong>{" "}
-                {resource.type === "pdf" ? "PDF Resource" : "Test Series"}
-              </p>
-              <p>
-                <strong>Access:</strong> Lifetime
-              </p>
-              <p>
-                <strong>Delivery:</strong> Digital
-              </p>
-              <p>
-                <strong>Support:</strong> Email / Telegram
-              </p>
+              <div className="mt-4 space-y-2 text-sm text-slate-700">
+                <p>
+                  <strong>Type:</strong>{" "}
+                  {resource.type === "pdf"
+                    ? "PDF Resource"
+                    : "Test Series"}
+                </p>
+                <p>
+                  <strong>Access:</strong> Lifetime
+                </p>
+                <p>
+                  <strong>Delivery:</strong> Digital
+                </p>
+                <p>
+                  <strong>Support:</strong> Email / Telegram
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -20,15 +20,31 @@ const Resources = () => {
     <>
       <Navbar />
 
-      <div className="container py-14">
-        <h2 className="text-2xl font-semibold text-slate-900">
-          GATE Resources
-        </h2>
+      <div className="bg-slate-50 min-h-screen">
+        <div className="container py-16">
+          {/* Header */}
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold text-slate-900">
+              GATE Preparation Resources
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Carefully curated test series and study resources designed
+              strictly as per the latest GATE syllabus.
+            </p>
+          </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-          {resources.map((resource) => (
-            <ResourceCard key={resource._id} resource={resource} />
-          ))}
+          {/* Resource Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {resources.map((resource) => (
+              <ResourceCard key={resource._id} resource={resource} />
+            ))}
+          </div>
+
+          {resources.length === 0 && (
+            <p className="mt-12 text-slate-600">
+              No resources available at the moment.
+            </p>
+          )}
         </div>
       </div>
 

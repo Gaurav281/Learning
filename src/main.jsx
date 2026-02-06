@@ -5,18 +5,20 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
+import SupportButton from "./components/SupportButton";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <App />
+        <SupportButton></SupportButton>
 
         {/* 🔔 GLOBAL TOAST MOUNT */}
         <Toaster
           position="top-right"
           toastOptions={{
-            duration: 2000,
+            duration: 1000,
             style: {
               background: "#0f172a",
               color: "#fff",

@@ -14,29 +14,34 @@ const Login = () => {
     <>
       <Navbar />
 
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="border rounded-xl p-10 text-center max-w-sm w-full">
-          <h2 className="text-xl font-semibold text-slate-900">
-            Login Required
+      <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 px-4">
+        <div className="bg-white border rounded-2xl p-10 max-w-md w-full shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-900 text-center">
+            Secure Login
           </h2>
 
-          <p className="text-sm text-slate-600 mt-2">
-            Please login with Google to continue.
+          <p className="text-sm text-slate-600 mt-3 text-center">
+            Login to access premium GATE resources, test series, and your
+            personalized dashboard.
           </p>
 
           <button
             onClick={loginWithGoogle}
             disabled={authLoading}
-            className={`mt-6 w-full py-2 rounded-md transition
+            className={`mt-8 w-full py-3 rounded-lg font-medium transition flex items-center justify-center gap-2
               ${
                 authLoading
-                  ? "bg-gray-400 cursor-not-allowed"
+                  ? "bg-gray-400 cursor-not-allowed text-white"
                   : "bg-blue-600 hover:bg-blue-700 text-white"
               }
             `}
           >
-            {authLoading ? "Signing in..." : "Continue with Google"}
+            {authLoading ? "Signing in securely..." : "Continue with Google"}
           </button>
+
+          <p className="text-xs text-slate-500 mt-6 text-center">
+            We use Google authentication for secure and verified access only.
+          </p>
         </div>
       </div>
     </>
