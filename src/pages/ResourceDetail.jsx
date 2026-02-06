@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import api from "../services/api";
 import { generatePoster } from "../utils/generatePoster";
+import { showInfo } from "../utils/toast";
 
 const ResourceDetail = () => {
   const { id } = useParams();
@@ -58,9 +59,29 @@ const ResourceDetail = () => {
                 {resource.title}
               </h1>
 
-              <p className="mt-4 text-slate-600 leading-relaxed">
+              {/* <p className="mt-4 text-slate-600 leading-relaxed">
                 {resource.description}
-              </p>
+              </p> */}
+              <div className="mt-4 text-slate-600">
+                {resource.description.includes("✔") ? (
+                  <ul className="space-y-2">
+                    {resource.description.split("✔").map((point, index) => {
+                      if (!point.trim()) return null;
+                      return (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-green-600 mt-1">✔</span>
+                          <span className="leading-relaxed">{point.trim()}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <p className="leading-relaxed whitespace-pre-line">
+                    {resource.description}
+                  </p>
+                )}
+              </div>
+
 
               {/* Pricing */}
               <div className="mt-6">
@@ -103,8 +124,7 @@ const ResourceDetail = () => {
 
                     <button
                       onClick={() =>
-                        (window.location.href =
-                          "https://t.me/YOUR_PAYMENT_BOT")
+                        (showInfo("Not available at this moment"))
                       }
                       className="block mt-4 text-sm text-slate-600 underline"
                     >

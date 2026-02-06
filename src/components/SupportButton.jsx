@@ -1,4 +1,4 @@
-const TELEGRAM_SUPPORT_URL = "https://t.me/YOUR_SUPPORT_BOT"; // replace
+const TELEGRAM_SUPPORT_URL = "https://t.me/@Gatepreppro"; // replace
 
 const SupportButton = () => {
   return (

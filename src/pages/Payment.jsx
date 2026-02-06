@@ -7,8 +7,8 @@ import Footer from "../components/Footer";
 import api from "../services/api";
 import { showSuccess, showError } from "../utils/toast";
 
-const UPI_ID = "yourupi@bank";
-const PAYEE_NAME = "GatePrepPro";
+const UPI_ID = "gauravkhatri281-1@okhdfcbank";
+const PAYEE_NAME = "Gaurav Khatri";
 const PAYMENT_TIME = 300;
 
 const Payment = () => {
@@ -149,12 +149,12 @@ const Payment = () => {
                     />
                   </div>
 
-                  <div className="text-sm text-slate-600">
+                  {/* <div className="text-sm text-slate-600">
                     UPI ID:
                     <span className="font-medium text-slate-800 ml-1">
                       {UPI_ID}
                     </span>
-                  </div>
+                  </div> */}
                 </>
               )}
 

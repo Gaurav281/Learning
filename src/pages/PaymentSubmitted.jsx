@@ -29,7 +29,7 @@ const PaymentSubmitted = () => {
           </p>
 
           <p className="mt-2 text-slate-600">
-            You will receive access shortly after approval.
+            You will receive access shortly within few minutes.
           </p>
 
           <p className="mt-6 text-sm text-slate-500">

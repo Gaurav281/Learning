@@ -42,7 +42,7 @@ const Resources = () => {
 
           {resources.length === 0 && (
             <p className="mt-12 text-slate-600">
-              No resources available at the moment.
+              Please Wait ...
             </p>
           )}
         </div>

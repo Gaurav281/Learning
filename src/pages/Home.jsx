@@ -7,6 +7,61 @@ const Home = () => {
     <>
       <Navbar />
 
+      {/* ================= FOUNDER CREDIBILITY ================= */}
+      <section className="bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block mb-4 text-sm font-medium text-green-600 bg-green-50 px-4 py-1 rounded-full">
+              Built by a GATE Topper
+            </span>
+
+            <h2 className="text-3xl font-bold text-slate-900">
+              Learn from Someone Who Has Cracked GATE
+            </h2>
+
+            <p className="mt-6 text-lg text-slate-600">
+              Hi, I’m{" "}
+              <span className="font-semibold text-slate-900">Gaurav</span>, and I
+              secured{" "}
+              <span className="font-semibold text-slate-900">
+                AIR 246 in GATE Computer Science
+              </span>
+              . This platform is built from real exam experience — focusing only
+              on what actually works in GATE.
+            </p>
+
+            <div className="mt-10 grid md:grid-cols-3 gap-8 text-left">
+              <div className="p-6 rounded-xl border bg-slate-50">
+                <h4 className="font-semibold text-slate-900">
+                  Exam-Oriented Strategy
+                </h4>
+                <p className="mt-2 text-sm text-slate-600">
+                  Content aligned with how GATE questions are framed and scored.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl border bg-slate-50">
+                <h4 className="font-semibold text-slate-900">
+                  No Unnecessary Content
+                </h4>
+                <p className="mt-2 text-sm text-slate-600">
+                  Only high-impact topics that directly improve rank.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl border bg-slate-50">
+                <h4 className="font-semibold text-slate-900">
+                  Built for Serious Aspirants
+                </h4>
+                <p className="mt-2 text-sm text-slate-600">
+                  Ideal for PSU, IIT, and top-rank focused students.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= HERO SECTION ================= */}
       <section className="bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 py-24 text-center">
@@ -57,7 +112,8 @@ const Home = () => {
           <div>
             <h3 className="text-3xl font-bold text-slate-900">Expert-Built</h3>
             <p className="mt-3 text-sm text-slate-600">
-              Designed by subject experts, toppers, and experienced educators.
+              Designed using real GATE experience and topper-level preparation
+              strategy.
             </p>
           </div>
 
@@ -112,6 +168,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      
 
       {/* ================= FINAL CTA ================= */}
       <section className="bg-blue-600">
