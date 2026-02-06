@@ -31,9 +31,9 @@ const Navbar = () => {
             Resources
           </NavLink>
 
-          <NavLink to="/test-series" className={navLink}>
+          {/* <NavLink to="/test-series" className={navLink}>
             Test Series
-          </NavLink>
+          </NavLink> */}
 
           {user?.role === "admin" && (
             <NavLink to="/admin" className={navLink}>
