@@ -78,9 +78,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (firebaseUser) => {
       try {
-        if (firebaseUser) {
+        if (firebaseUser && !localStorage.getItem("token")) {
           await syncUserWithBackend(firebaseUser);
-        } else {
+        }
+        else {
           setUser(null);
           localStorage.removeItem("token");
         }
@@ -105,9 +106,10 @@ export const AuthProvider = ({ children }) => {
         logout,
       }}
     >
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
+
 };
 
 /* ---------------- Hook ---------------- */
